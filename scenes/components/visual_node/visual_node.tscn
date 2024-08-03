@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4nsot5hdba1q"]
+
+[ext_resource type="Script" path="res://scripts/components/visual_node/visual_node.gd" id="1_7qomw"]
+[ext_resource type="Texture2D" uid="uid://dkk35p1jqbner" path="res://resources/textures/circle_texture.png" id="2_mawlo"]
+
+[node name="VisualNode" type="Node2D" node_paths=PackedStringArray("sprite")]
+editor_description = "A visual representation of a point in space."
+script = ExtResource("1_7qomw")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.529412, 0.807843, 0.980392, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_mawlo")
