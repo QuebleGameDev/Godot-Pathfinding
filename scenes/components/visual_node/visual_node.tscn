@@ -6,9 +6,10 @@
 [node name="VisualNode" type="Node2D" node_paths=PackedStringArray("sprite")]
 editor_description = "A visual representation of a point in space."
 script = ExtResource("1_7qomw")
+color = 2
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.529412, 0.807843, 0.980392, 1)
+modulate = Color(0.180392, 0.545098, 0.341176, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_mawlo")

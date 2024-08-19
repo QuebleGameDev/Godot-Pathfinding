@@ -11,8 +11,24 @@ config_version=5
 [application]
 
 config/name="Pathfinding"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/tags=PackedStringArray("tutorial")
+run/main_scene="res://scenes/worlds/world.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://resources/": "gray",
+"res://scenes/": "blue",
+"res://scenes/all_pathfinding_examples/": "green",
+"res://scripts/": "blue",
+"res://scripts/all_pathfinding_examples/": "green"
+}
 
 [rendering]
 
