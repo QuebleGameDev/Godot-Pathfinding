@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4nsot5hdba1q"]
 
-[ext_resource type="Script" path="res://scripts/components/visual_node/visual_node.gd" id="1_7qomw"]
-[ext_resource type="Texture2D" uid="uid://dkk35p1jqbner" path="res://resources/textures/circle_texture.png" id="2_mawlo"]
+[ext_resource type="Script" path="res://project_specific/visual_node/visual_node.gd" id="1_7qomw"]
+[ext_resource type="Texture2D" uid="uid://dkk35p1jqbner" path="res://project_specific/resources/textures/circle_texture.png" id="2_mawlo"]
 
 [node name="VisualNode" type="Node2D" node_paths=PackedStringArray("sprite")]
 editor_description = "A visual representation of a point in space."

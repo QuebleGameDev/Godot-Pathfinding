@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1x0as3m8qtnl"]
 
-[ext_resource type="Script" path="res://scripts/all_pathfinding_examples/navigation_server_example/navigator_entity/navigator_entity.gd" id="1_d3f26"]
-[ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://scenes/components/visual_node/visual_node.tscn" id="1_qnxhc"]
+[ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://project_specific/visual_node/visual_node.tscn" id="1_qnxhc"]
+[ext_resource type="Script" path="res://navigation_server_example/navigator_entity/navigator_entity.gd" id="1_wmyjw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2l7us"]
 radius = 27.0185
 
 [node name="NavigatorEntity" type="CharacterBody2D"]
-script = ExtResource("1_d3f26")
+script = ExtResource("1_wmyjw")
 
 [node name="VisualNode" parent="." instance=ExtResource("1_qnxhc")]
 color = 0

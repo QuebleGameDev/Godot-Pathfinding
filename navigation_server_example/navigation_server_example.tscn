@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba80b3n3an62o"]
+[gd_scene load_steps=6 format=3 uid="uid://ba80b3n3an62o"]
 
-[ext_resource type="Script" path="res://scripts/all_pathfinding_examples/navigation_server_example/navigation_server_example.gd" id="1_g80dq"]
-[ext_resource type="PackedScene" uid="uid://d1x0as3m8qtnl" path="res://scenes/all_pathfinding_examples/navigation_server_example/navigator_entity/navigator_entity.tscn" id="2_kwgv8"]
-[ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://scenes/components/visual_node/visual_node.tscn" id="3_yqrj7"]
+[ext_resource type="PackedScene" uid="uid://d1x0as3m8qtnl" path="res://navigation_server_example/navigator_entity/navigator_entity.tscn" id="2_kwgv8"]
+[ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://project_specific/visual_node/visual_node.tscn" id="3_yqrj7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3c4ma"]
 vertices = PackedVector2Array(577.258, 372.953, 494.891, 231.82, 506.633, 188, 539.063, 101.641, 606.969, 272.859, 605.93, 365.25, 494.891, 144.18, 58.0078, 422.633, 65.8281, 195.688, 195.477, 83.2031, 508.531, 492, 524.242, 550.656, 424.492, 575.07, 295.43, 583.008, 191.594, 586.891, 66.4766, 512.008, 462.82, 112.109, 462.82, 263.891, 526.938, 423.258, 419, 275.633, 343.109, 231.82, 375.18, 263.891, 419, 100.367, 375.18, 112.109, 343.109, 144.18, 331.367, 188)
@@ -19,11 +18,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedIn
 outlines = Array[PackedVector2Array]([PackedVector2Array(777, 301, 792, 99, 1052, 89, 1167, 284, 1136, 481, 910, 562, 846, 411)])
 
 [node name="NavigationServerExample" type="Node2D"]
-script = ExtResource("1_g80dq")
-
-[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
-position = Vector2(599, 314)
-end_position = Vector2(196.22, -50)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_3c4ma")
@@ -46,6 +40,14 @@ shape = SubResource("CircleShape2D_nnj31")
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_r4u1o")
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+position = Vector2(552, 183)
+end_position = Vector2(254, -41)
+
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="."]
+position = Vector2(817, 314)
+end_position = Vector2(-223, 22)
 
 [node name="NavigatorEntity" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("2_kwgv8")]
 position = Vector2(143, 309)
