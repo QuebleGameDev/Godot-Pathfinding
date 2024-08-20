@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://project_specific/visual_node/visual_node.tscn" id="3_yqrj7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3c4ma"]
-vertices = PackedVector2Array(577.258, 372.953, 494.891, 231.82, 506.633, 188, 539.063, 101.641, 606.969, 272.859, 605.93, 365.25, 494.891, 144.18, 58.0078, 422.633, 65.8281, 195.688, 195.477, 83.2031, 508.531, 492, 524.242, 550.656, 424.492, 575.07, 295.43, 583.008, 191.594, 586.891, 66.4766, 512.008, 462.82, 112.109, 462.82, 263.891, 526.938, 423.258, 419, 275.633, 343.109, 231.82, 375.18, 263.891, 419, 100.367, 375.18, 112.109, 343.109, 144.18, 331.367, 188)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(3, 2, 6), PackedInt32Array(7, 8, 9, 10, 11, 12, 13, 14, 15), PackedInt32Array(3, 6, 16), PackedInt32Array(17, 1, 0, 18), PackedInt32Array(19, 17, 18), PackedInt32Array(18, 10, 9, 20), PackedInt32Array(21, 19, 18), PackedInt32Array(3, 16, 22), PackedInt32Array(9, 3, 22), PackedInt32Array(9, 22, 23), PackedInt32Array(9, 23, 24), PackedInt32Array(9, 24, 25), PackedInt32Array(9, 25, 20), PackedInt32Array(18, 20, 21)])
+vertices = PackedVector2Array(539.063, 101.641, 606.969, 272.859, 604.078, 531.133, 523.406, 288, 511.844, 244.789, 480.211, 213.156, 195.477, 83.2031, 437, 201.594, 393.789, 213.156, 65.8281, 195.688, 362.156, 244.789, 58.0078, 422.633, 511.844, 331.211, 480.211, 362.844, 424.492, 575.07, 437, 374.406, 295.43, 583.008, 350.594, 288, 191.594, 586.891, 66.4766, 512.008, 362.156, 331.211, 393.789, 362.844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 6, 8, 10, 11), PackedInt32Array(12, 3, 2), PackedInt32Array(13, 12, 2, 14), PackedInt32Array(15, 13, 14, 16), PackedInt32Array(11, 10, 17), PackedInt32Array(18, 19, 11, 17, 20, 16), PackedInt32Array(21, 15, 16), PackedInt32Array(16, 20, 21)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(192, 73, 546, 92, 617, 271, 614, 539, 426, 585, 296, 593, 189, 597, 57, 518, 48, 423, 56, 191)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nnj31"]
-radius = 77.2787
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww5t6"]
+radius = 76.0592
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r4u1o"]
 vertices = PackedVector2Array(1046.42, 99.2109, 1156.56, 285.977, 1127.04, 473.594, 915.523, 549.398, 854.898, 406.359, 801.297, 108.641, 787.211, 298.461)
@@ -19,33 +19,30 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(777, 301, 792, 99, 1052
 
 [node name="NavigationServerExample" type="Node2D"]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegions" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationRegions"]
 navigation_polygon = SubResource("NavigationPolygon_3c4ma")
 
-[node name="MeshesForBaking" type="Node2D" parent="NavigationRegion2D"]
-editor_description = "Contains StaticBody2D nodes for baking the NavigationPolygon"
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegions/NavigationRegion2D"]
+position = Vector2(437, 288)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/MeshesForBaking"]
-position = Vector2(419, 188)
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegions/NavigationRegion2D/StaticBody2D"]
+radius = 92.79
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/MeshesForBaking/StaticBody2D"]
-shape = SubResource("CircleShape2D_nnj31")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegions/NavigationRegion2D/StaticBody2D"]
+shape = SubResource("CircleShape2D_ww5t6")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D/MeshesForBaking"]
-position = Vector2(646, 492)
-scale = Vector2(1.645, 1.645)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/MeshesForBaking/StaticBody2D2"]
-shape = SubResource("CircleShape2D_nnj31")
-
-[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="NavigationRegions"]
 navigation_polygon = SubResource("NavigationPolygon_r4u1o")
 
-[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+[node name="NavigationLinks" type="Node2D" parent="."]
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="NavigationLinks"]
 position = Vector2(552, 183)
 end_position = Vector2(254, -41)
 
-[node name="NavigationLink2D2" type="NavigationLink2D" parent="."]
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="NavigationLinks"]
 position = Vector2(817, 314)
 end_position = Vector2(-223, 22)
 
@@ -55,4 +52,5 @@ movement_target = NodePath("../Target")
 
 [node name="Target" parent="." instance=ExtResource("3_yqrj7")]
 position = Vector2(832, 241)
+color = 1
 follow_mouse = true

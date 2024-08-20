@@ -16,6 +16,8 @@ color = 0
 shape = SubResource("CircleShape2D_2l7us")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 22.25
 debug_enabled = true
 
 [node name="RecalcTimer" type="Timer" parent="."]

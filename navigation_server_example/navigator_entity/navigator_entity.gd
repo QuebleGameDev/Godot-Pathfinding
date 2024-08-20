@@ -20,6 +20,7 @@ func _ready():
 	recalc_timer.timeout.connect(_on_recalc_timer_timeout)
 	navigation_agent.link_reached.connect(_on_navigation_link_reached)
 	navigation_agent.waypoint_reached.connect(_on_waypoint_reached)
+	navigation_agent.velocity_computed.connect(_on_velocity_computed) #! avoidance
 
 	# These values need to be adjusted according to the actor's speed, -
 	# the navigation layout, and the actor's collision shape.
@@ -42,8 +43,11 @@ func _physics_process(delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
 	# Calculate the velocity to move towards the next path point.
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed * delta
-	move_and_slide()
+	var new_velocity = current_agent_position.direction_to(next_path_position) * movement_speed * delta
+	if navigation_agent.avoidance_enabled:
+		navigation_agent.set_velocity(new_velocity)
+	else:
+		_on_velocity_computed(new_velocity)
 
 ## Setup the navigation agent.
 func actor_setup():
@@ -72,3 +76,8 @@ func _on_waypoint_reached(details : Dictionary) -> void:
 	# This check produces unexpected results when comparing vectors directly.
 	if details.position.distance_to(nav_link_end_position) < 5.0:
 		on_nav_link = false
+
+## Called when the navigation agent reports a new velocity.
+func _on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
+	move_and_slide()
