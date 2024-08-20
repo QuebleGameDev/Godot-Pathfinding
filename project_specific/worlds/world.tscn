@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b16dc6qjv3sns"]
+[gd_scene load_steps=4 format=3 uid="uid://b16dc6qjv3sns"]
+
+[ext_resource type="Script" path="res://project_specific/worlds/world.gd" id="1_jlrdp"]
+[ext_resource type="PackedScene" uid="uid://ba80b3n3an62o" path="res://navigation_server_example/navigation_server_example.tscn" id="2_85r3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_agndg"]
-font_size = 20
+font_size = 26
+font_color = Color(1, 0.161709, 0.212521, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_jlrdp")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -26,8 +31,13 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Checkout the following scenes for different pathfinding method examples:
-res://scenes/all_pathfinding_examples/navigation_server_example/navigation_server_example.tscn"
+text = " Scenes are meant to be run independently.
+ Please open the desired pathfinding example scene, then run it independently."
 label_settings = SubResource("LabelSettings_agndg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ExampleScenes (run independently)" type="Node2D" parent="."]
+
+[node name="NavigationServerExample" parent="ExampleScenes (run independently)" instance=ExtResource("2_85r3x")]
+visible = false

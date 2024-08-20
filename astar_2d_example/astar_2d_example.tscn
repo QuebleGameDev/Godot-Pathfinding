@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://4oy63jugcye2"]
+
+[ext_resource type="PackedScene" uid="uid://bimjytvvdclay" path="res://astar_2d_example/astar_point/astar_point.tscn" id="1_3xuql"]
+[ext_resource type="Script" path="res://astar_2d_example/astar_2d_example.gd" id="1_dfadq"]
+[ext_resource type="PackedScene" uid="uid://d4nsot5hdba1q" path="res://project_specific/visual_node/visual_node.tscn" id="2_ldbja"]
+
+[sub_resource type="Gradient" id="Gradient_beblo"]
+offsets = PackedFloat32Array(0, 0.349246, 0.825377)
+colors = PackedColorArray(0.114281, 0.206955, 0.127896, 1, 0.113015, 0.124051, 0.0914706, 1, 0.189026, 0.212364, 0.0815125, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_15s0g"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6ak4x"]
+seamless = true
+color_ramp = SubResource("Gradient_beblo")
+noise = SubResource("FastNoiseLite_15s0g")
+
+[node name="Astar2DExample" type="Node2D" node_paths=PackedStringArray("astar_points_container")]
+script = ExtResource("1_dfadq")
+astar_points_container = NodePath("AstarPoints")
+
+[node name="Navigator" parent="." instance=ExtResource("2_ldbja")]
+z_index = 1
+position = Vector2(70, 362)
+scale = Vector2(0.7, 0.7)
+color = 1
+
+[node name="Floor_Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+texture = SubResource("NoiseTexture2D_6ak4x")
+polygon = PackedVector2Array(95, 268, 119, 88, 542, 38, 895, 220, 1070, 477, 992, 593, 528, 608, 358, 491, 378, 413, 571, 535, 899, 520, 815, 283, 506, 185, 237, 588, 129, 568, 304, 288, 300, 133, 199, 135, 197, 329, 26, 465, 15, 348)
+
+[node name="Label" type="Label" parent="Floor_Polygon2D"]
+offset_left = 451.0
+offset_top = 341.0
+offset_right = 491.0
+offset_bottom = 364.0
+text = "Press 'SPACE' to recalculate path to mouse"
+
+[node name="AstarPoints" type="Node2D" parent="."]
+
+[node name="AstarPoint" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(70, 362)
+connections = [NodePath("../AstarPoint2")]
+
+[node name="AstarPoint2" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(143, 286)
+connections = [NodePath("../AstarPoint3")]
+
+[node name="AstarPoint3" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(153, 119)
+connections = [NodePath("../AstarPoint4")]
+
+[node name="AstarPoint4" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(421, 95)
+connections = [NodePath("../AstarPoint5"), NodePath("../AstarPoint6")]
+
+[node name="AstarPoint5" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(372, 273)
+connections = [NodePath("../AstarPoint7")]
+
+[node name="AstarPoint7" parent="AstarPoints" instance=ExtResource("1_3xuql")]
+position = Vector2(221, 510)
+
+[node name="AstarPoint6" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(604, 141)
+connections = [NodePath("../AstarPoint8")]
+
+[node name="AstarPoint8" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(843, 242)
+connections = [NodePath("../AstarPoint9")]
+
+[node name="AstarPoint9" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(984, 529)
+connections = [NodePath("../AstarPoint10")]
+
+[node name="AstarPoint10" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(771, 573)
+connections = [NodePath("../AstarPoint11")]
+
+[node name="AstarPoint11" parent="AstarPoints" node_paths=PackedStringArray("connections") instance=ExtResource("1_3xuql")]
+position = Vector2(556, 565)
+connections = [NodePath("../AstarPoint12")]
+
+[node name="AstarPoint12" parent="AstarPoints" instance=ExtResource("1_3xuql")]
+position = Vector2(406, 478)

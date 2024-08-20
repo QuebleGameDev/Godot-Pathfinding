@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bimjytvvdclay"]
+
+[ext_resource type="Texture2D" uid="uid://dkk35p1jqbner" path="res://project_specific/resources/textures/circle_texture.png" id="1_lmn1k"]
+[ext_resource type="Script" path="res://astar_2d_example/astar_point/astar_point.gd" id="2_cr67w"]
+
+[node name="AstarPoint" type="Sprite2D"]
+modulate = Color(1.44392e-06, 0.52833, 0.713078, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_lmn1k")
+script = ExtResource("2_cr67w")

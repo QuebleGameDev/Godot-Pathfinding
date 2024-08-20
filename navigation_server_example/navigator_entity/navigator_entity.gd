@@ -20,7 +20,7 @@ func _ready():
 	recalc_timer.timeout.connect(_on_recalc_timer_timeout)
 	navigation_agent.link_reached.connect(_on_navigation_link_reached)
 	navigation_agent.waypoint_reached.connect(_on_waypoint_reached)
-	navigation_agent.velocity_computed.connect(_on_velocity_computed) #! avoidance
+	navigation_agent.velocity_computed.connect(_on_velocity_computed)
 
 	# These values need to be adjusted according to the actor's speed, -
 	# the navigation layout, and the actor's collision shape.
