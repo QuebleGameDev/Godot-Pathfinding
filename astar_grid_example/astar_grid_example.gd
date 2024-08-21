@@ -16,8 +16,10 @@ var path = []
 func _ready() -> void:
 	$CanvasLayer/Control/VBoxContainer/RandomizePointsButton.pressed.connect(randomize_point_positions)
 
+	# Set up parameters, then update the grid.
 	astar_grid.region = tilemap_layer.get_used_rect()
 	astar_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
 
 	for tile in tilemap_layer.get_used_cells_by_id(0, WALL_TILE_COORD):

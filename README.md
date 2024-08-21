@@ -1,6 +1,6 @@
 # Pathfinding in Godot
 This project aims to assist with various methods of pathfinding available in the Godot game engine.
-Feel free to clone this repo, and/or use any of this code for whatever projects you'd like!
+Feel free to use any of the code/resources in this repository for whatever projects you'd like!
 
 All the pathfinding example scenes can be opened from `res://scenes/all_pathfinding_examples/`, and run independently.
 Scripts for each of these scenes can be found in the `res://scripts/` folder under the same directory.
