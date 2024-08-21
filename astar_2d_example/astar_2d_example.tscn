@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4oy63jugcye2"]
+[gd_scene load_steps=8 format=3 uid="uid://4oy63jugcye2"]
 
 [ext_resource type="PackedScene" uid="uid://bimjytvvdclay" path="res://astar_2d_example/astar_point/astar_point.tscn" id="1_3xuql"]
 [ext_resource type="Script" path="res://astar_2d_example/astar_2d_example.gd" id="1_dfadq"]
@@ -14,6 +14,10 @@ colors = PackedColorArray(0.114281, 0.206955, 0.127896, 1, 0.113015, 0.124051, 0
 seamless = true
 color_ramp = SubResource("Gradient_beblo")
 noise = SubResource("FastNoiseLite_15s0g")
+
+[sub_resource type="Curve" id="Curve_4bbs5"]
+_data = [Vector2(0, 0.324249), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.102183, 0.0, 0, 0]
+point_count = 2
 
 [node name="Astar2DExample" type="Node2D" node_paths=PackedStringArray("astar_points_container")]
 script = ExtResource("1_dfadq")
@@ -84,3 +88,9 @@ connections = [NodePath("../AstarPoint12")]
 
 [node name="AstarPoint12" parent="AstarPoints" instance=ExtResource("1_3xuql")]
 position = Vector2(406, 478)
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_4bbs5")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

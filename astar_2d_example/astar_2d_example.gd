@@ -1,5 +1,7 @@
 extends Node2D
 
+const MOVE_SPEED = 750
+
 ## A reference to the node that holds all the AStar points.
 ## NOTE: Points can be added completely through code, we're simply-
 ## referencing a custom "astar point" class for ease of use.
@@ -7,6 +9,8 @@ extends Node2D
 
 ## A reference to the navigator object that we will move through this script.
 @onready var navigator = $Navigator
+## A reference to the debug line used for example visualization
+@onready var debug_line : Line2D = $Line2D
 
 ## Create a new AStar2D object.
 var astar = AStar2D.new()
@@ -36,13 +40,14 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if path.size() > 0: # If we have a path to follow
-		var velocity = navigator.position.direction_to(path[0]) * 200 * delta
+		var velocity = navigator.position.direction_to(path[0]) * MOVE_SPEED * delta
 		navigator.position += velocity
-		if navigator.position.distance_to(path[0]) < 10.0:
+		if navigator.position.distance_to(path[0]) < MOVE_SPEED * delta:
+			navigator.position = path[0]
 			path.remove_at(0)
-			print("Current path: ", path)
 
 ## Recalculate the path to the target position based on the astar points.
 func recalculate_path(target_position: Vector2) -> void:
 	path.clear()
 	path = astar.get_point_path(astar.get_closest_point(navigator.position), astar.get_closest_point(target_position))
+	debug_line.points = path
