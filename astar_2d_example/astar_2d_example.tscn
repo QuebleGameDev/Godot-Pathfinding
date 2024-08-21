@@ -16,8 +16,8 @@ color_ramp = SubResource("Gradient_beblo")
 noise = SubResource("FastNoiseLite_15s0g")
 
 [sub_resource type="Curve" id="Curve_4bbs5"]
-_data = [Vector2(0, 0.324249), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.102183, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.498845, 0.362271), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Astar2DExample" type="Node2D" node_paths=PackedStringArray("astar_points_container")]
 script = ExtResource("1_dfadq")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b16dc6qjv3sns"]
+[gd_scene load_steps=6 format=3 uid="uid://b16dc6qjv3sns"]
 
 [ext_resource type="Script" path="res://project_specific/worlds/world.gd" id="1_jlrdp"]
 [ext_resource type="PackedScene" uid="uid://ba80b3n3an62o" path="res://navigation_server_example/navigation_server_example.tscn" id="2_85r3x"]
+[ext_resource type="PackedScene" uid="uid://4oy63jugcye2" path="res://astar_2d_example/astar_2d_example.tscn" id="3_ppvex"]
+[ext_resource type="PackedScene" uid="uid://dlrct87r3eos5" path="res://astar_grid_example/astar_grid_example.tscn" id="4_wvwxq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_agndg"]
 font_size = 26
@@ -40,4 +42,10 @@ vertical_alignment = 1
 [node name="ExampleScenes (run independently)" type="Node2D" parent="."]
 
 [node name="NavigationServerExample" parent="ExampleScenes (run independently)" instance=ExtResource("2_85r3x")]
+visible = false
+
+[node name="Astar2DExample" parent="ExampleScenes (run independently)" instance=ExtResource("3_ppvex")]
+visible = false
+
+[node name="AstarGridExample" parent="ExampleScenes (run independently)" instance=ExtResource("4_wvwxq")]
 visible = false

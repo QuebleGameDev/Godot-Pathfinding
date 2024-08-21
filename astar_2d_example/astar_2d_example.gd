@@ -34,10 +34,6 @@ func _ready():
 			for connection in point.connections:
 				astar.connect_points(point.get_index(), connection.get_index())
 
-		# Print for visualization (optional)
-		for i in astar.get_point_count():
-			print(i, " is connected to ", astar.get_point_connections(i))
-
 func _process(delta: float) -> void:
 	if path.size() > 0: # If we have a path to follow
 		var velocity = navigator.position.direction_to(path[0]) * MOVE_SPEED * delta

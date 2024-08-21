@@ -24,6 +24,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://astar_2d_example/": "green",
+"res://astar_grid_example/": "pink",
 "res://navigation_server_example/": "orange"
 }
 
